@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Choose your plan - Free All In One AI Subscription Plans">
+    <title>Subscription Plans - Free All In One AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/subscription.css">
+</head>
+
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">🤖 Free All In One AI</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="subscription.html" class="active">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <h4 class="sidebar-title">AI Tools</h4>
+        <ul class="sidebar-menu">
+            <li><a href="tools/text-to-pdf.html">Text to PDF</a></li>
+            <li><a href="tools/text-to-image.html">Text to Image</a></li>
+            <li><a href="tools/text-to-invoice.html">Invoice Generator</a></li>
+            <li><a href="tools/seo-checker.html">SEO Checker</a></li>
+            <li><a href="tools/qr-generator.html">QR Code Generator</a></li>
+            <li><a href="tools/visiting-card.html">Visiting Card Maker</a></li>
+        </ul>
+
+        <div class="sidebar-social"
+            style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--glass-border);">
+            <h4 style="margin-bottom: var(--spacing-md); font-size: 0.9rem;">Connect With Us</h4>
+            <div style="display: flex; gap: var(--spacing-sm);">
+                <a href="#"
+                    style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color); transition: all 0.3s;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#"
+                    style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color); transition: all 0.3s;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#"
+                    style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color); transition: all 0.3s;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#"
+                    style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color); transition: all 0.3s;">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="subscription-hero">
+        <h1>Choose Your Perfect Plan</h1>
+        <p>Start free and upgrade as you grow. All plans include access to our powerful AI tools.</p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pricing-container">
+
+        <!-- Free Plan -->
+        <div class="pricing-card free">
+            <div class="pricing-name">Free</div>
+            <div class="pricing-description">Perfect for trying out our AI tools</div>
+
+            <div class="pricing-price">
+                <span class="pricing-currency">₹</span>
+                <span class="pricing-amount">0</span>
+                <span class="pricing-period">/month</span>
+            </div>
+
+            <ul class="pricing-features">
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>10 AI generations per day</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Access to basic tools</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Standard support</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-times-circle feature-icon disabled"></i>
+                    <span>Watermarked outputs</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-times-circle feature-icon disabled"></i>
+                    <span>No API access</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-times-circle feature-icon disabled"></i>
+                    <span>No priority support</span>
+                </li>
+            </ul>
+
+            <button class="pricing-cta" onclick="window.location.href='signup.html'">
+                Get Started Free
+            </button>
+        </div>
+
+        <!-- Starter Plan (Popular) -->
+        <div class="pricing-card popular">
+            <div class="pricing-badge">MOST POPULAR</div>
+
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-description">For professionals and power users</div>
+
+            <div class="pricing-price">
+                <span class="pricing-currency">₹</span>
+                <span class="pricing-amount">99</span>
+                <span class="pricing-period">/month</span>
+            </div>
+
+            <ul class="pricing-features">
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Unlimited AI generations</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Access to all tools</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Priority support</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>No watermarks</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Export in all formats</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Cloud storage (5GB)</span>
+                </li>
+            </ul>
+
+            <button class="pricing-cta" onclick="handleSubscription('starter', 99)">
+                Choose Starter
+            </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card pro">
+            <div class="pricing-name">Pro</div>
+            <div class="pricing-description">For businesses and developers</div>
+
+            <div class="pricing-price">
+                <span class="pricing-currency">₹</span>
+                <span class="pricing-amount">499</span>
+                <span class="pricing-period">/month</span>
+            </div>
+
+            <ul class="pricing-features">
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Everything in Starter</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span><strong>API Access with key</strong></span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Higher rate limits</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Custom branding</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Early access to features</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Dedicated support</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <span>Cloud storage (50GB)</span>
+                </li>
+            </ul>
+
+            <button class="pricing-cta" onclick="handleSubscription('pro', 499)">
+                Choose Pro
+            </button>
+        </div>
+
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I cancel my subscription anytime?</div>
+            <div class="faq-answer">Yes! You can cancel your subscription at any time. Your access will continue until
+                the end of your current billing period.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What payment methods do you accept?</div>
+            <div class="faq-answer">We accept all major credit/debit cards, UPI, net banking, and digital wallets
+                through Razorpay.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do you offer refunds?</div>
+            <div class="faq-answer">We offer a 7-day money-back guarantee. If you're not satisfied, contact us within 7
+                days of purchase for a full refund.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What is API access in the Pro plan?</div>
+            <div class="faq-answer">API access allows you to integrate our AI tools directly into your own applications.
+                You'll receive an API key and documentation.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I upgrade or downgrade my plan?</div>
+            <div class="faq-answer">Absolutely! You can change your plan at any time. Upgrades are immediate, and
+                downgrades take effect at the next billing cycle.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Free All In One AI</h4>
+                <p class="text-secondary">Your one-stop solution for AI-powered productivity tools.</p>
+                <div style="display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md);">
+                    <a href="#"
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color);">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#"
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color);">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#"
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color);">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#"
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border-radius: 50%; color: var(--primary-color);">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="tools/text-to-pdf.html">Text to PDF</a></li>
+                    <li><a href="tools/text-to-image.html">Text to Image</a></li>
+                    <li><a href="tools/qr-generator.html">QR Generator</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="subscription.html">Pricing</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Free All In One AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Handle subscription selection
+        async function handleSubscription(plan, price) {
+            // Check if user is logged in
+            if (!window.authClient || !window.authClient.isAuthenticated()) {
+                window.appUtils?.showToast('Please login to subscribe', 'info');
+                setTimeout(() => window.location.href = '/login.html', 1000);
+                return;
+            }
+
+            // TODO: Integrate Razorpay payment gateway
+            // For now, show placeholder message
+            alert(`Selected ${plan.toUpperCase()} plan at ₹${price}/month\n\nPayment integration coming soon!\nYou'll be redirected to Razorpay for secure payment.`);
+
+            // Razorpay integration example:
+            /*
+            const options = {
+              key: 'YOUR_RAZORPAY_KEY',
+              amount: price * 100, // Amount in paise
+              currency: 'INR',
+              name: 'Free All In One AI',
+              description: `${plan.charAt(0).toUpperCase() + plan.slice(1)} Plan Subscription`,
+              handler: function(response) {
+                // Send payment details to backend
+                console.log('Payment successful:', response);
+                window.location.href = '/dashboard.html?subscribed=true';
+              },
+              prefill: {
+                email: window.authClient.getUser().email,
+                name: window.authClient.getUser().name
+              },
+              theme: {
+                color: '#667eea'
+              }
+            };
+            
+            const rzp = new Razorpay(options);
+            rzp.open();
+            */
+        }
+    </script>
+</body>
+
+</html>
