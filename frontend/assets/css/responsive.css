@@ -1,0 +1,418 @@
+/* ========================================
+   Free All In One AI - Responsive Styles
+   Mobile-First Responsive Design
+   ======================================== */
+
+/* ========================================
+   Tablet View (768px - 1024px)
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    :root {
+        --spacing-xl: 2.5rem;
+        --spacing-xxl: 3rem;
+    }
+
+    .header-container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .sidebar {
+        width: 240px;
+    }
+
+    main {
+        margin-left: 240px;
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    footer {
+        margin-left: 240px;
+    }
+
+    .hero-slider {
+        height: 500px;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   Mobile View (Up to 768px)
+   ======================================== */
+@media screen and (max-width: 768px) {
+    :root {
+        font-size: 14px;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-xxl: 2.5rem;
+    }
+
+    /* Header - Mobile */
+    header {
+        padding: var(--spacing-sm);
+    }
+
+    .header-container {
+        padding: 0;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    /* Mobile Menu Toggle - Show */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Navigation Menu - Mobile Drawer */
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--bg-secondary);
+        border-left: 1px solid var(--glass-border);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-lg);
+        gap: 0;
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-xl);
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        padding: var(--spacing-sm);
+    }
+
+    /* Sidebar - Hide by default, toggle on mobile */
+    .sidebar {
+        left: -280px;
+        top: 60px;
+        height: calc(100vh - 60px);
+        width: 280px;
+        box-shadow: var(--shadow-xl);
+        z-index: 998;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Overlay when sidebar is open */
+    .sidebar-overlay {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-base);
+        z-index: 997;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Main Content - No left margin on mobile */
+    main {
+        margin-left: 0;
+        margin-top: 60px;
+        padding: var(--spacing-md) var(--spacing-sm);
+        min-height: calc(100vh - 60px);
+    }
+
+    /* Hero Slider - Mobile */
+    .hero-slider {
+        height: 400px;
+        border-radius: var(--radius-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .slide-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .slide-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    .slider-controls {
+        bottom: var(--spacing-md);
+    }
+
+    /* Section Headers - Mobile */
+    .section-header {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Tools Grid - Mobile */
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .tool-card {
+        padding: var(--spacing-md);
+    }
+
+    .tool-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    /* CTA Section - Mobile */
+    .cta-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+        border-radius: var(--radius-md);
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-section p {
+        font-size: 1rem;
+    }
+
+    /* Footer - Mobile */
+    footer {
+        margin-left: 0;
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Forms - Mobile */
+    .form-input,
+    .form-textarea,
+    .form-select {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+
+    /* Buttons - Mobile */
+    .btn {
+        width: 100%;
+        padding: var(--spacing-sm);
+    }
+
+    /* Tool Container - Mobile */
+    .tool-container {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+    }
+
+    .tool-header {
+        padding-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .result-area {
+        padding: var(--spacing-md);
+        min-height: 200px;
+    }
+
+    /* Content Pages - Mobile */
+    .content-page {
+        padding: 0;
+    }
+
+    .content-page h2 {
+        font-size: 1.5rem;
+        margin-top: var(--spacing-lg);
+    }
+
+    .content-page h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
+   Small Mobile (Up to 480px)
+   ======================================== */
+@media screen and (max-width: 480px) {
+    :root {
+        font-size: 13px;
+    }
+
+    .hero-slider {
+        height: 350px;
+    }
+
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .slide-content p {
+        font-size: 0.95rem;
+    }
+
+    .tools-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .tool-card {
+        padding: var(--spacing-sm);
+    }
+
+    .cta-section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+}
+
+/* ========================================
+   Large Desktop (1400px and above)
+   ======================================== */
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .hero-slider {
+        height: 700px;
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+
+    header,
+    .sidebar,
+    footer,
+    .menu-toggle,
+    .slider-controls,
+    .cta-section {
+        display: none;
+    }
+
+    main {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .tool-card,
+    .tool-container {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}
+
+/* ========================================
+   Landscape Orientation (Mobile/Tablet)
+   ======================================== */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .hero-slider {
+        height: 400px;
+    }
+
+    main {
+        padding: var(--spacing-md);
+    }
+
+    .sidebar {
+        height: calc(100vh - 60px);
+    }
+}
+
+/* ========================================
+   Accessibility - Reduced Motion
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ========================================
+   High Contrast Mode
+   ======================================== */
+@media (prefers-contrast: high) {
+    :root {
+        --glass-border: rgba(255, 255, 255, 0.3);
+        --text-secondary: #e0e0e0;
+    }
+
+    .tool-card,
+    .form-input,
+    .form-textarea,
+    .form-select {
+        border-width: 2px;
+    }
+}
+
+/* ========================================
+   Dark Mode Support (System Preference)
+   ======================================== */
+/* Already dark by default, but ensure compatibility */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+}

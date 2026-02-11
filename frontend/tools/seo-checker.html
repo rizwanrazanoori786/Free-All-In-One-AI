@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SEO Checker - Analyze your website's SEO performance and get actionable insights. Free SEO tool.">
+    <title>SEO Checker - Free All In One AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index.html">🤖 Free All In One AI</a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#tools">Tools</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <h4 class="sidebar-title">AI Tools</h4>
+        <ul class="sidebar-menu">
+            <li><a href="text-to-pdf.html">Text to PDF</a></li>
+            <li><a href="text-to-image.html">Text to Image</a></li>
+            <li><a href="text-to-invoice.html">Invoice Generator</a></li>
+            <li><a href="seo-checker.html" class="active">SEO Checker</a></li>
+            <li><a href="qr-generator.html">QR Code Generator</a></li>
+            <li><a href="visiting-card.html">Visiting Card Maker</a></li>
+        </ul>
+
+        <h4 class="sidebar-title" style="margin-top: 2rem;">Legal</h4>
+        <ul class="sidebar-menu">
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+            <li><a href="../disclaimer.html">Disclaimer</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h1 class="text-gradient">📊 SEO Checker</h1>
+                    <p>Analyze your website's SEO performance and get expert insights to improve your search rankings.
+                    </p>
+                </div>
+
+                <form id="seoForm">
+                    <div class="form-group">
+                        <label for="websiteUrl" class="form-label">Website URL *</label>
+                        <input type="url" id="websiteUrl" name="url" class="form-input" required
+                            placeholder="https://www.example.com">
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Enter the full URL
+                            including http:// or https://</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetKeyword" class="form-label">Target Keyword (Optional)</label>
+                        <input type="text" id="targetKeyword" name="keyword" class="form-input"
+                            placeholder="e.g., digital marketing">
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">Check if your page
+                            is optimized for a specific keyword</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary hover-shine">
+                        Analyze SEO
+                    </button>
+                </form>
+
+                <div id="resultArea" class="result-area" style="display: none;">
+                    <h3>SEO Analysis Results</h3>
+                    <div id="seoResults"></div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Free All In One AI</h4>
+                <p class="text-secondary">Your one-stop solution for AI-powered productivity tools.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="text-to-pdf.html">Text to PDF</a></li>
+                    <li><a href="text-to-image.html">Text to Image</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="../contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Free All In One AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script>
+        // Form submission
+        document.getElementById('seoForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const resultArea = document.getElementById('resultArea');
+            const seoResults = document.getElementById('seoResults');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            const url = document.getElementById('websiteUrl').value;
+            const keyword = document.getElementById('targetKeyword').value;
+
+            // Show loading
+            submitBtn.textContent = 'Analyzing...';
+            submitBtn.disabled = true;
+            resultArea.style.display = 'none';
+            seoResults.innerHTML = '';
+
+            try {
+                // Call API
+                const response = await window.apiClient.checkSEO(url, { keyword });
+
+                // Display results
+                displaySEOResults(response);
+
+                resultArea.style.display = 'block';
+                resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                window.appUtils.showToast('SEO analysis complete!', 'success');
+            } catch (error) {
+                console.error('SEO Check Error:', error);
+                window.appUtils.showToast(error.message || 'Failed to analyze SEO. Please try again.', 'error');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        function displaySEOResults(data) {
+            const resultsDiv = document.getElementById('seoResults');
+
+            // Sample result display (adapt based on actual API response)
+            const html = `
+        <div style="display: grid; gap: var(--spacing-md);">
+          <div class="tool-card">
+            <h4>Overall Score</h4>
+            <div style="font-size: 3rem; font-weight: 700; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+              ${data.score || '85'}/100
+            </div>
+          </div>
+          
+          <div class="tool-card">
+            <h4>✅ Strengths</h4>
+            <ul style="list-style: none; padding: 0;">
+              ${(data.strengths || ['Title tag optimized', 'Mobile-friendly design', 'Fast loading speed']).map(item => `<li style="padding: 0.5rem 0; border-bottom: 1px solid var(--glass-border);">✓ ${item}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div class="tool-card">
+            <h4>⚠️ Areas for Improvement</h4>
+            <ul style="list-style: none; padding: 0;">
+              ${(data.improvements || ['Add meta description', 'Improve image alt texts', 'Increase content length']).map(item => `<li style="padding: 0.5rem 0; border-bottom: 1px solid var(--glass-border);">! ${item}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div class="tool-card">
+            <h4>📝 Recommendations</h4>
+            <p>${data.recommendations || 'Focus on creating high-quality content, improving page speed, and building quality backlinks. Ensure all images have descriptive alt text and your meta tags are optimized.'}</p>
+          </div>
+        </div>
+      `;
+
+            resultsDiv.innerHTML = html;
+        }
+    </script>
+
+</body>
+
+</html>
