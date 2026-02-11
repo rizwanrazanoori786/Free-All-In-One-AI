@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard - Free All In One AI">
+    <title>Dashboard - Free All In One AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">🤖 Free All In One AI</a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-profile-dropdown">
+                <div class="profile-trigger" id="profileTrigger">
+                    <div class="profile-avatar" id="userAvatar"></div>
+                    <span class="profile-name" id="userName">User</span>
+                </div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" id="profileLink">Profile</a>
+                    <div class="divider"></div>
+                    <button id="logoutBtn">Logout</button>
+                </div>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <h4 class="sidebar-title">AI Tools</h4>
+        <ul class="sidebar-menu">
+            <li><a href="tools/text-to-pdf.html">Text to PDF</a></li>
+            <li><a href="tools/text-to-image.html">Text to Image</a></li>
+            <li><a href="tools/text-to-invoice.html">Invoice Generator</a></li>
+            <li><a href="tools/seo-checker.html">SEO Checker</a></li>
+            <li><a href="tools/qr-generator.html">QR Code Generator</a></li>
+            <li><a href="tools/visiting-card.html">Visiting Card Maker</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="text-gradient">Dashboard</h1>
+                <p>Welcome back! Here's your activity overview.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">📊</div>
+                        <div>
+                            <div class="stat-value" id="totalActivities">0</div>
+                            <div class="stat-label">Total Activities</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🔥</div>
+                        <div>
+                            <div class="stat-value" id="recentActivities">0</div>
+                            <div class="stat-label">Last 7 Days</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">⭐</div>
+                        <div>
+                            <div class="stat-value" id="mostUsedTool">-</div>
+                            <div class="stat-label">Most Used Tool</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="margin-top: var(--spacing-xl);">
+                <h3 style="margin-bottom: var(--spacing-md);">Recent Activity</h3>
+                <div style="overflow-x: auto;">
+                    <table class="activity-table" id="activityTable">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Tool</th>
+                                <th>Device</th>
+                                <th>Date & Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; padding: var(--spacing-lg);">Loading
+                                    activity...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Free All In One AI</h4>
+                <p class="text-secondary">Your one-stop solution for AI-powered productivity tools.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Tools</h4>
+                <ul class="footer-links">
+                    <li><a href="tools/text-to-pdf.html">Text to PDF</a></li>
+                    <li><a href="tools/text-to-image.html">Text to Image</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Free All In One AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // Require authentication
+        window.requireAuth();
+
+        // Load user data on page load
+        window.addEventListener('DOMContentLoaded', async function () {
+            const user = window.authClient.getUser();
+
+            // Update UI with user info
+            document.getElementById('userName').textContent = user.name;
+            const avatarEl = document.getElementById('userAvatar');
+            if (user.avatar) {
+                avatarEl.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;border-radius:50%;">`;
+            } else {
+                avatarEl.textContent = user.name.charAt(0).toUpperCase();
+            }
+
+            // Load statistics
+            try {
+                const statsResponse = await window.authClient.protectedFetch(
+                    `${window.authClient.baseURL}/user/stats`
+                );
+                const statsData = await statsResponse.json();
+
+                if (statsData.success) {
+                    const stats = statsData.data.stats;
+                    document.getElementById('totalActivities').textContent = stats.totalActivities || 0;
+                    document.getElementById('recentActivities').textContent = stats.recentActivity || 0;
+                    document.getElementById('mostUsedTool').textContent =
+                        stats.mostUsedTool ? stats.mostUsedTool.name.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : '-';
+                }
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+
+            // Load activity history
+            try {
+                const activityResponse = await window.authClient.protectedFetch(
+                    `${window.authClient.baseURL}/user/activity?limit=10`
+                );
+                const activityData = await activityResponse.json();
+
+                if (activityData.success) {
+                    const activities = activityData.data.activities;
+                    const tbody = document.getElementById('activityTableBody');
+
+                    if (activities.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No activity yet</td></tr>';
+                    } else {
+                        tbody.innerHTML = activities.map(activity => `
+              <tr>
+                <td>
+                  <span class="activity-badge ${activity.action}">${activity.action.replace('_', ' ')}</span>
+                </td>
+                <td>${activity.tool ? activity.tool.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : '-'}</td>
+                <td>${activity.metadata?.device || 'Unknown'}</td>
+                <td>${new Date(activity.timestamp).toLocaleString()}</td>
+              </tr>
+            `).join('');
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load activity:', error);
+            }
+        });
+
+        // Profile dropdown toggle
+        document.getElementById('profileTrigger').addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.getElementById('profileDropdown').classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function () {
+            document.getElementById('profileDropdown').classList.remove('active');
+        });
+
+        // Logout handler
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            window.authClient.logout();
+        });
+    </script>
+
+</body>
+
+</html>

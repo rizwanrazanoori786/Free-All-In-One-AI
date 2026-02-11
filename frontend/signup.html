@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Free All In One AI - Create your account and access AI tools">
+    <title>Sign Up - Free All In One AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">🤖 Free All In One AI</a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="login.html" class="btn btn-primary">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Create Account</h1>
+                <p>Start using AI tools for free today!</p>
+            </div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="input-group">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="name" class="form-input" placeholder="Full Name" required minlength="2">
+                </div>
+
+                <div class="input-group">
+                    <span class="input-icon">📧</span>
+                    <input type="email" id="email" class="form-input" placeholder="Email address" required>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" class="form-input" placeholder="Password (min 8 characters)"
+                        required minlength="8">
+                    <div class="password-strength">
+                        <div class="password-strength-meter" id="strengthMeter"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="Confirm Password"
+                        required>
+                </div>
+
+                <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer; font-size: 0.875rem;">
+                    <input type="checkbox" id="terms" required style="margin-top: 0.25rem;">
+                    <span>I agree to the <a href="terms.html" style="color: var(--primary-color);">Terms of Service</a>
+                        and <a href="privacy.html" style="color: var(--primary-color);">Privacy Policy</a></span>
+                </label>
+
+                <button type="submit" class="btn btn-primary hover-shine">Create Account</button>
+            </form>
+
+            <div class="auth-divider">or sign up with</div>
+
+            <div id="g_id_onload" data-client_id="CLIENT_ID_PLACEHOLDER" data-context="signup" data-ux_mode="popup"
+                data-callback="handleGoogleSignUp" data-auto_prompt="false">
+            </div>
+
+            <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                data-text="signup_with" data-size="large" data-logo_alignment="left" data-width="100%">
+            </div>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // Redirect if already logged in
+        window.redirectIfAuthenticated();
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function () {
+            const strength = window.checkPasswordStrength(this.value);
+            const meter = document.getElementById('strengthMeter');
+
+            meter.className = 'password-strength-meter ' + strength;
+        });
+
+        // Password match validation
+        document.getElementById('confirmPassword').addEventListener('input', function () {
+            const password = document.getElementById('password').value;
+            if (this.value && this.value !== password) {
+                this.setCustomValidity('Passwords do not match');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        // Signup form handler
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                window.appUtils.showToast('Passwords do not match', 'error');
+                return;
+            }
+
+            submitBtn.textContent = 'Creating account...';
+            submitBtn.disabled = true;
+
+            try {
+                await window.authClient.signup(email, password, name);
+                window.appUtils.showToast('Account created successfully!', 'success');
+                setTimeout(() => {
+                    window.location.href = '/dashboard.html';
+                }, 500);
+            } catch (error) {
+                window.appUtils.showToast(error.message || 'Signup failed', 'error');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Google Sign-Up callback
+        function handleGoogleSignUp(response) {
+            window.authClient.googleLogin(response.credential)
+                .then(() => {
+                    window.appUtils.showToast('Google signup successful!', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/dashboard.html';
+                    }, 500);
+                })
+                .catch(error => {
+                    window.appUtils.showToast(error.message || 'Google signup failed', 'error');
+                });
+        }
+        window.handleGoogleSignUp = handleGoogleSignUp;
+    </script>
+
+</body>
+
+</html>

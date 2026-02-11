@@ -5,10 +5,12 @@
 
 // ========================================
 // API Configuration
+// NOTE: Auth-protected endpoints will automatically include JWT token
+// via authClient.protectedFetch() from auth.js
 // ========================================
 const API_CONFIG = {
     // Base URL - Update this when connecting to backend
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://localhost:5000/api', // Update for production
 
     // Endpoints
     endpoints: {

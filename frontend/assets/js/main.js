@@ -6,7 +6,35 @@
 // ========================================
 // DOM Ready Handler
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ========================================
+  // Hamburger Menu & Sidebar Toggle
+  // ========================================
+
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      sidebar.classList.toggle('active');
+      if (sidebarOverlay) {
+        sidebarOverlay.classList.toggle('active');
+      }
+    });
+
+    // Close sidebar when clicking overlay
+    if (sidebarOverlay) {
+      sidebarOverlay.addEventListener('click', function () {
+        menuToggle.classList.remove('active');
+        sidebar.classList.remove('active');
+        this.classList.remove('active');
+      });
+    }
+  }
+
   initializeApp();
 });
 
@@ -29,11 +57,11 @@ function initializeApp() {
 function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('.nav-menu');
-  
+
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
       navMenu.classList.toggle('active');
-      
+
       // Animate hamburger icon
       const spans = menuToggle.querySelectorAll('span');
       if (navMenu.classList.contains('active')) {
@@ -47,9 +75,9 @@ function initMobileMenu() {
         });
       }
     });
-    
+
     // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('active');
         const spans = menuToggle.querySelectorAll('span');
@@ -59,11 +87,11 @@ function initMobileMenu() {
         });
       }
     });
-    
+
     // Close menu when clicking a link
     const navLinks = navMenu.querySelectorAll('a');
     navLinks.forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener('click', function () {
         navMenu.classList.remove('active');
         const spans = menuToggle.querySelectorAll('span');
         spans.forEach(span => {
@@ -80,22 +108,22 @@ function initMobileMenu() {
 // ========================================
 function initSidebar() {
   const sidebar = document.querySelector('.sidebar');
-  
+
   if (!sidebar) return;
-  
+
   // Create sidebar toggle button for mobile
   const sidebarToggle = document.createElement('button');
   sidebarToggle.className = 'sidebar-toggle btn-secondary';
   sidebarToggle.innerHTML = '☰ Tools';
   sidebarToggle.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: none; padding: 12px 20px; border-radius: 50px; box-shadow: var(--shadow-lg);';
-  
+
   // Create overlay
   const overlay = document.createElement('div');
   overlay.className = 'sidebar-overlay';
-  
+
   document.body.appendChild(sidebarToggle);
   document.body.appendChild(overlay);
-  
+
   // Show toggle button on mobile
   function checkMobile() {
     if (window.innerWidth <= 768) {
@@ -106,18 +134,18 @@ function initSidebar() {
       overlay.classList.remove('active');
     }
   }
-  
+
   checkMobile();
   window.addEventListener('resize', checkMobile);
-  
+
   // Toggle sidebar
-  sidebarToggle.addEventListener('click', function() {
+  sidebarToggle.addEventListener('click', function () {
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active');
   });
-  
+
   // Close sidebar when clicking overlay
-  overlay.addEventListener('click', function() {
+  overlay.addEventListener('click', function () {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
   });
@@ -128,25 +156,25 @@ function initSidebar() {
 // ========================================
 function initSmoothScroll() {
   const links = document.querySelectorAll('a[href^="#"]');
-  
+
   links.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
-      
+
       // Skip if it's just "#"
       if (href === '#') {
         e.preventDefault();
         return;
       }
-      
+
       const target = document.querySelector(href);
-      
+
       if (target) {
         e.preventDefault();
         const headerOffset = 80;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
@@ -161,21 +189,21 @@ function initSmoothScroll() {
 // ========================================
 function initStickyHeader() {
   const header = document.querySelector('header');
-  
+
   if (!header) return;
-  
+
   let lastScroll = 0;
-  
-  window.addEventListener('scroll', function() {
+
+  window.addEventListener('scroll', function () {
     const currentScroll = window.pageYOffset;
-    
+
     // Add scrolled class for styling
     if (currentScroll > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-    
+
     lastScroll = currentScroll;
   });
 }
@@ -185,9 +213,9 @@ function initStickyHeader() {
 // ========================================
 function initLazyLoading() {
   const images = document.querySelectorAll('img[data-src]');
-  
+
   if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver(function(entries, observer) {
+    const imageObserver = new IntersectionObserver(function (entries, observer) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
@@ -198,7 +226,7 @@ function initLazyLoading() {
         }
       });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
   } else {
     // Fallback for browsers without IntersectionObserver
@@ -214,11 +242,11 @@ function initLazyLoading() {
 // ========================================
 function initScrollAnimations() {
   const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-stagger');
-  
+
   if (!elements.length) return;
-  
+
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -229,7 +257,7 @@ function initScrollAnimations() {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     });
-    
+
     elements.forEach(el => observer.observe(el));
   } else {
     // Fallback: just add visible class
@@ -243,21 +271,21 @@ function initScrollAnimations() {
 function initActiveNavigation() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-menu a, .sidebar-menu a');
-  
+
   if (!sections.length || !navLinks.length) return;
-  
+
   function highlightNavigation() {
     let current = '';
-    
+
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.clientHeight;
-      
+
       if (window.pageYOffset >= sectionTop - 100) {
         current = section.getAttribute('id');
       }
     });
-    
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === '#' + current) {
@@ -265,7 +293,7 @@ function initActiveNavigation() {
       }
     });
   }
-  
+
   window.addEventListener('scroll', highlightNavigation);
   highlightNavigation(); // Call once on load
 }
@@ -276,12 +304,12 @@ function initActiveNavigation() {
 function validateForm(formElement) {
   const inputs = formElement.querySelectorAll('input[required], textarea[required]');
   let isValid = true;
-  
+
   inputs.forEach(input => {
     if (!input.value.trim()) {
       isValid = false;
       input.classList.add('error');
-      
+
       // Add error message if not exists
       if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error-message')) {
         const errorMsg = document.createElement('span');
@@ -301,7 +329,7 @@ function validateForm(formElement) {
       }
     }
   });
-  
+
   return isValid;
 }
 
@@ -311,14 +339,14 @@ function validateForm(formElement) {
 function showToast(message, type = 'info') {
   // Create toast container if not exists
   let toastContainer = document.querySelector('.toast-container');
-  
+
   if (!toastContainer) {
     toastContainer = document.createElement('div');
     toastContainer.className = 'toast-container';
     toastContainer.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;';
     document.body.appendChild(toastContainer);
   }
-  
+
   // Create toast
   const toast = document.createElement('div');
   toast.className = `toast toast-${type} toast-enter`;
@@ -333,7 +361,7 @@ function showToast(message, type = 'info') {
     min-width: 250px;
     max-width: 400px;
   `;
-  
+
   // Add color based on type
   const colors = {
     success: 'var(--success-color)',
@@ -341,21 +369,21 @@ function showToast(message, type = 'info') {
     warning: 'var(--warning-color)',
     info: 'var(--accent-color)'
   };
-  
+
   toast.style.borderLeftColor = colors[type] || colors.info;
   toast.style.borderLeftWidth = '4px';
-  
+
   toast.textContent = message;
-  
+
   toastContainer.appendChild(toast);
-  
+
   // Remove after 3 seconds
   setTimeout(() => {
     toast.classList.remove('toast-enter');
     toast.classList.add('toast-exit');
     setTimeout(() => {
       toast.remove();
-      
+
       // Remove container if empty
       if (toastContainer.children.length === 0) {
         toastContainer.remove();
@@ -371,12 +399,12 @@ function showLoading(element) {
   const spinner = document.createElement('div');
   spinner.className = 'spinner';
   spinner.style.margin = '20px auto';
-  
+
   if (element) {
     element.innerHTML = '';
     element.appendChild(spinner);
   }
-  
+
   return spinner;
 }
 
